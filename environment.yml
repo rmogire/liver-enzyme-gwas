@@ -1,0 +1,34 @@
+name: liver-gwas          # the environment’s name
+channels:
+  - conda-forge
+  - bioconda
+  - defaults              # (defaults last is a good rule)
+
+dependencies:
+  # ── Core languages ───────────────────────────────────────────────────────
+  - python>=3.10
+  - pip
+  - r-base>=4.2
+
+  # ── GWAS / fine-mapping tools ────────────────────────────────────────────
+  - saige            # if a conda package exists; otherwise install separately
+  - ldsc             # LDSC scripts
+  - plink2
+  - gwaslab          # Python library for handling GWAS summary stats
+  - r-susier         # R package for SuSiE fine-mapping
+
+  # ── Plotting & data wrangling ────────────────────────────────────────────
+  - pandas
+  - numpy
+  - seaborn
+  - matplotlib
+  - r-data.table
+  - r-qqman
+  - rpy2            # Python ↔ R bridge
+
+  # ── Java runtime for METASOFT ────────────────────────────────────────────
+  - openjdk>=8       # (METASOFT is a Java jar)
+
+  # ── FastENLOC — if you prefer a pip install (otherwise compile manually) ─
+  - pip:
+      - fastenloc    # comment out if you’ll build from source
